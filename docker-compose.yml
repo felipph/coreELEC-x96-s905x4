@@ -9,24 +9,19 @@ services:
     restart: on-failure
     volumes:
        - ./hostapd/hostapd.conf:/etc/hostapd/hostapd.conf
-#     ports:
-#       - "5432:5432"
-#     networks:
-#       - host
-#     restart: unless-stopped
-
-#   sqlserver:
-#     image: mcr.microsoft.com/mssql/server:2019-latest
-#     environment:
-#       SA_PASSWORD: "SqlServer2019!"
-#       ACCEPT_EULA: "Y"
-#       MSSQL_PID: "Developer"
-#     ports:
-#       - "1433:1433"
-
-# networks:
-#   postgres:
-#     driver: bridge
-
-# volumes:
-#     postgres:
+  squid-alpine-ssl:
+      image: alatas/squid-alpine-ssl:r3
+      environment:
+        - CN=squid.local
+        - O=squid
+        - OU=squid
+        - C=US
+      ports:
+        - "3128:3128"
+        - "4128:4128"
+      volumes:
+        - ./squid/log:/var/log/
+        - ./squid/conf/squid.conf:/etc/squid/squid.conf
+        - ./squid/cache:/var/cache
+        - ./squid/cert:/etc/squid-cert
+      restart: always
