@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  hostapd:
+    container_name: hostapd_container
+    image: simonchuang12/rpi-hostapd
+    network_mode: "host"
+    privileged: true 
+    restart: on-failure
+    volumes:
+       - ./hostapd/hostapd.conf:/etc/hostapd/hostapd.conf
+#     ports:
+#       - "5432:5432"
+#     networks:
+#       - host
+#     restart: unless-stopped
+
+#   sqlserver:
+#     image: mcr.microsoft.com/mssql/server:2019-latest
+#     environment:
+#       SA_PASSWORD: "SqlServer2019!"
+#       ACCEPT_EULA: "Y"
+#       MSSQL_PID: "Developer"
+#     ports:
+#       - "1433:1433"
+
+# networks:
+#   postgres:
+#     driver: bridge
+
+# volumes:
+#     postgres:
