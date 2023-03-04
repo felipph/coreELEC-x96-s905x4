@@ -11,7 +11,7 @@ services:
        - ./hostapd/hostapd.conf:/etc/hostapd/hostapd.conf
   squid-alpine-ssl:  
       container_name: squid_container
-      image: alatas/squid-alpine-ssl:r3
+      image: squid-ssl-bump-arm:latest
       environment:
         - CN=calado.local
         - O=calado
@@ -25,4 +25,5 @@ services:
         - ./squid/conf/squid.conf:/etc/squid/squid.conf
         - ./squid/cache:/var/cache
         - ./squid/cert:/etc/squid-cert
+        - ./squid/forbidden_domains:/etc/squid/forbidden_domains
       restart: always
