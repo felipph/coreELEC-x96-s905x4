@@ -12,7 +12,6 @@ services:
   squid-alpine-ssl:  
       container_name: squid_container
       image: alatas/squid-alpine-ssl:r3
-      network_mode: "host"
       environment:
         - CN=calado.local
         - O=calado
