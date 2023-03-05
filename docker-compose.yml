@@ -17,21 +17,21 @@ services:
     restart: on-failure
     volumes:
        - ./hostapd5g/hostapd.conf:/etc/hostapd/hostapd.conf
-  # squid-alpine-ssl:  
-  #     container_name: squid_container
-  #     image: squid-ssl-bump-arm:latest
-  #     environment:
-  #       - CN=calado.local
-  #       - O=calado
-  #       - OU=calado
-  #       - C=BR
-  #     ports:
-  #       - "3128:3128"
-  #       - "4128:4128"
-  #     volumes:
-  #       - ./squid/log:/var/log/
-  #       - ./squid/conf/squid.conf:/etc/squid/squid.conf
-  #       - ./squid/cache:/var/cache
-  #       - ./squid/cert:/etc/squid-cert
-  #       - ./squid/forbidden_domains:/etc/squid/forbidden_domains
-  #     restart: always
+  squid-alpine-ssl:  
+      container_name: squid_container
+      image: squid-ssl-bump-arm:latest
+      environment:
+        - CN=calado.local
+        - O=calado
+        - OU=calado
+        - C=BR
+      ports:
+        - "3128:3128"
+        - "4128:4128"
+      volumes:
+        - ./squid/log:/var/log/
+        - ./squid/conf/squid.conf:/etc/squid/squid.conf
+        - ./squid/cache:/var/cache
+        - ./squid/cert:/etc/squid-cert
+        - ./squid/forbidden_domains:/etc/squid/forbidden_domains
+      restart: always
