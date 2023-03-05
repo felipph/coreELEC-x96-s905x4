@@ -1,8 +1,16 @@
 version: '3.5'
 
 services:
-  hostapd:
-    container_name: hostapd_container
+  hostapd2.4g:
+    container_name: hostapd_container2.4g
+    image: simonchuang12/rpi-hostapd
+    network_mode: "host"
+    privileged: true 
+    restart: on-failure
+    volumes:
+       - ./hostapd5g/hostapd.conf:/etc/hostapd/hostapd.conf
+  hostapd5g:
+    container_name: hostapd_container5g
     image: simonchuang12/rpi-hostapd
     network_mode: "host"
     privileged: true 
